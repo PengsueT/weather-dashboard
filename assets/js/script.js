@@ -1,7 +1,7 @@
 const API_KEY = "4cb9901776250d6496f8d463e571e0e5"; // My API key
 const LatLonURL = `http://api.openweathermap.org/geo/1.0/direct?limit=1&appid=${API_KEY}&q=`;
 const ForecastURL = `http://api.openweathermap.org/data/2.5/forecast?units=imperial&appid=${API_KEY}`;
-
+let cityArray = JSON.parse(localStorage.getItem("Cities")) || []; // Load cities from localStorage or an empty array
 const buttonSearch = $("#search");
 const todayCard = $(".today");
 const cards = $(".cards");
@@ -11,6 +11,8 @@ async function searchCoords(cityInput) {
     const finalURL = `${LatLonURL}+${cityInput}`;
     const response = await fetch(finalURL);
     const coords = await response.json();
+
+    // If no coordinates found this will alert the user that city isn't fount
     if (!coords.length) {
         alert("City not found!");
         return;
@@ -26,6 +28,7 @@ async function searchCity(name, lat, lon) {
     const response = await fetch(finalURL);
     const forecast = await response.json();
 
+    // Handles today's weather forecast
     const todayForecast = forecast.list[0];
     const todayIcon = todayForecast.weather[0].icon;
     const todayTemp = todayForecast.main.temp;
@@ -35,7 +38,7 @@ async function searchCity(name, lat, lon) {
 
     todayCard.empty();
     todayCard.append(`
-        <div class="card-body mb-3">
+        <div class="card-body">
             <h2 class="card-title">${name}</h2>
             <img src="${weatherImgURL}" alt="Weather Icon">
             <p>Temp: ${todayTemp}ºF</p>
@@ -43,7 +46,7 @@ async function searchCity(name, lat, lon) {
             <p>Humidity: ${todayHumidity}%</p>
         </div>
     `);
-
+    // Process and display the 5-day forecast
     const daysForecast = get5DayForecast(forecast.list);
     createForecastCards(daysForecast);
 }
@@ -57,6 +60,7 @@ function get5DayForecast(list) {
         const day = dateObject.date();
         const hour = dateObject.hour();
 
+        // Adding the relevant forecast data (date, temp, humidity, icon, wind) to the final list
         if (hour === 12 && day !== prevDay) {
             prevDay = day;
             finalList.push({
@@ -71,7 +75,7 @@ function get5DayForecast(list) {
     return finalList;
 }
 
-// we want to display the 5-day forecast cards
+// Displaying the 5-day forecast cards
 function createForecastCards(daysForecast) {
     cards.empty();
 
@@ -96,6 +100,44 @@ function createForecastCards(daysForecast) {
     });
 }
 
+
+// Creating search history buttons
+function createCityButton(name) {
+    if (!cityArray.includes(name)) {
+        cityArray.push(name);
+        localStorage.setItem("Cities", JSON.stringify(cityArray));
+
+        const cityButton = $('<button>').addClass("btn btn-secondary w-100 mb-2").text(name);
+        cityButton.on("click", () => searchCoords(name));
+        $("#city-buttons").append(cityButton);
+    }
+}
+
+// Initializing search history from localStorage
+function initializeHistory() {
+    cityArray.forEach(city => {
+        const cityButton = $('<button>').addClass("btn btn-secondary w-100 mb-2").text(city);
+        cityButton.on("click", () => searchCoords(city));
+        $("#city-buttons").append(cityButton);
+    });
+}
+
+// Updating handleButtonClicked to create city button
+async function handleButtonClicked() {
+    const cityInput = $("#input-city").val();
+    if (!cityInput) {
+        alert("Please enter a city name");
+        return;
+    }
+    const cityName = await searchCoords(cityInput);
+    createCityButton(cityName);
+}
+
+// Initialize on page load
+$(document).ready(() => {
+    initializeHistory();
+    buttonSearch.on("click", handleButtonClicked);
+});
 
 // Triggering search on button click
 buttonSearch.on("click", async () => {

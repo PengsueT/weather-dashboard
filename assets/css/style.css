@@ -2,38 +2,16 @@ body {
     background: linear-gradient(135deg, #83a4d4, #b6fbff);
 }
 
-.header {
-    background-color: #007BFF;
-    color: rgb(0, 0, 0);
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    margin-top: 20px;
-}
-
-.header h1 {
-    font-family: 'Roboto', sans-serif;
-    font-size: 2.5rem;
-    font-weight: 700;
-    letter-spacing: 1.5px;
-}
-
 .card {
     background-color: #7fb5a9;
-    flex-grow: 1; /* makes the card take up space uniformly */
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 10px;
 }
 
 .cards .card {
     margin: 10px;
-
-}
-
-#city-buttons button {
-    margin-top: 5px;
-}
-
-.container {
-    margin-top: 50px;
 }
 
 .card-body {
@@ -58,4 +36,12 @@ img {
 .card-text {
     font-size: 1rem;
     margin-bottom: 5px;
+}
+
+#city-buttons button {
+    margin-top: 5px;
+}
+
+.container {
+    margin-top: 50px;
 }

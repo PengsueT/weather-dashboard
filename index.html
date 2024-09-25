@@ -12,10 +12,15 @@
 </head>
 
 <body>
-    <div class="container mt-5">
-        <h1 class="text-center mb-4">Weather Dashboard</h1>
+    <div class="d-flex">
 
-        <div class="col-md-6 offset-md-3">
+        <aside class="sidebar p-3">
+            <h3 class="text-center">Search History</h3>
+            <div id="city-buttons" class="list-group"></div> <!-- Search history buttons will appear here -->
+        </aside>
+        <div class="container mt-5">
+            <h1 class="text-center mb-4">Weather Dashboard</h1>
+
             <h2 class="text-center mb-4">Search a City</h2>
             <div class="row mb-3">
                 <div class="col-md-6 offset-md-3">
@@ -23,17 +28,17 @@
                     <button id="search" class="btn btn-primary mt-2 w-100">Search</button>
                 </div>
             </div>
-        </div>
 
-        <div class="col-md-6 offset-md-3">
-            <div class="today card p-3 mt-3"></div>
-        </div>
 
-        <div class="row mt-4">
-            <div class="cards d-flex justify-content-center flex-wrap"></div>
-        </div>
-        <div class="col-md-6 offset-md-3 mt-4">
-            <div id="city-buttons"></div>
+            <h3 class="text-center mb-4">Today's Forecast</h3>
+            <div class="today card"></div>
+
+
+            <div class="row mt-4">
+                <h3 class="text-center mb-4">5-day Forecast</h3>
+                <div class="cards d-flex justify-content-center"></div>
+            </div>
+
         </div>
     </div>
     <script src="/assets/js/script.js"></script>
