@@ -12,20 +12,29 @@
 </head>
 
 <body>
-    <header class="header text-center mb-4">
-        <h1>Weather Dashboard</h1>
-    </header>
     <div class="container mt-5">
-        <h2 class="text-center mb-4">Search a City</h2>
-        <div class="row mb-3">
-            <div class="col-md-6 offset-md-3">
-                <input type="text" id="input-city" class="form-control" placeholder="Enter city name">
-                <button id="search" class="btn btn-primary mt-2 w-100">Search</button>
+        <h1 class="text-center mb-4">Weather Dashboard</h1>
+
+        <div class="col-md-6 offset-md-3">
+            <h2 class="text-center mb-4">Search a City</h2>
+            <div class="row mb-3">
+                <div class="col-md-6 offset-md-3">
+                    <input type="text" id="input-city" class="form-control" placeholder="Enter city name">
+                    <button id="search" class="btn btn-primary mt-2 w-100">Search</button>
+                </div>
             </div>
         </div>
-        <div class="today card"></div>
-        <div class="cards d-flex justify-content-center mt-4"></div>
-        <div id="city-buttons" class="mt-4"></div>
+
+        <div class="col-md-6 offset-md-3">
+            <div class="today card p-3 mt-3"></div>
+        </div>
+
+        <div class="row mt-4">
+            <div class="cards d-flex justify-content-center flex-wrap"></div>
+        </div>
+        <div class="col-md-6 offset-md-3 mt-4">
+            <div id="city-buttons"></div>
+        </div>
     </div>
     <script src="/assets/js/script.js"></script>
 </body>

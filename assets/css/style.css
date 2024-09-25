@@ -20,13 +20,42 @@ body {
 
 .card {
     background-color: #7fb5a9;
-    flex-wrap: wrap;
+    flex-grow: 1; /* makes the card take up space uniformly */
 }
 
 .cards .card {
     margin: 10px;
+
 }
 
 #city-buttons button {
     margin-top: 5px;
+}
+
+.container {
+    margin-top: 50px;
+}
+
+.card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+}
+
+img {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 10px;
+}
+
+.card-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.card-text {
+    font-size: 1rem;
+    margin-bottom: 5px;
 }
