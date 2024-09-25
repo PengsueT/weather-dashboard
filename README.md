@@ -36,3 +36,5 @@ This project was built using the following technologies and resources:
 - [Day.js](https://day.js.org/) for date formatting and manipulation.
 - [OpenWeatherMap API](https://openweathermap.org/api) for fetching weather data.
 - [W3School](https://www.w3schools.com/js/js_if_else.asp)
+
+- [GithubLiveLink](https://pengsuet.github.io/weather-dashboard/)
