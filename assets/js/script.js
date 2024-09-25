@@ -1,6 +1,6 @@
 const API_KEY = "4cb9901776250d6496f8d463e571e0e5"; // My API key
-const LatLonURL = `http://api.openweathermap.org/geo/1.0/direct?limit=1&appid=${API_KEY}&q=`;
-const ForecastURL = `http://api.openweathermap.org/data/2.5/forecast?units=imperial&appid=${API_KEY}`;
+const LatLonURL = `https://api.openweathermap.org/geo/1.0/direct?limit=1&appid=${API_KEY}&q=`;
+const ForecastURL = `https://api.openweathermap.org/data/2.5/forecast?units=imperial&appid=${API_KEY}`;
 let cityArray = JSON.parse(localStorage.getItem("Cities")) || []; // Load cities from localStorage or an empty array
 const buttonSearch = $("#search");
 const todayCard = $(".today");
